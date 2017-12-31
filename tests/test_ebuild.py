@@ -41,6 +41,18 @@ class TestEbuildOutput(unittest.TestCase):
             correct_text = re.sub('Copyright 2017', 'Copyright ' + strftime("%Y", gmtime()), s)
         self.assertEqual(got_text, correct_text)
 
+    def test_multi_license_str(self):
+        """Test Multiple Licenses"""
+        ebuild = self.get_ebuild()
+        got_text = ebuild.get_ebuild_text('Open Source Robotics Foundation', 'BSD,GPL')
+        self.assertTrue('BSD' in got_text and 'GPL' in got_text)
+
+    def test_multi_license_list(self):
+        """Test Multiple Licenses"""
+        ebuild = self.get_ebuild()
+        got_text = ebuild.get_ebuild_text('Open Source Robotics Foundation', ['BSD','GPL'])
+        self.assertTrue('BSD' in got_text and 'GPL' in got_text)
+
     def test_bad_external_build_depend(self):
         """Test Bad External Build Dependency"""
         ebuild = self.get_ebuild()
