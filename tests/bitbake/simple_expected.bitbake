@@ -1,0 +1,19 @@
+# Copyright 2017 Open Source Robotics Foundation
+# Distributed under the terms of the BSD license
+
+DESCRIPTION = "an ebuild"
+AUTHOR = "author"
+SECTION = "devel"
+
+ROSDISTRO = "lunar"
+LICENSE = "BSD"
+LIC_FILES_CHKSUM = "file://package.xml;beginline=3;endline=3;md5=4
+
+DEPENDS = "p2os_driver"
+SRC_URI = "https://www.website.com/download/${PN}/archive/${PN}/release/lunar/0.0.0.tar.gz;downloadfilename=${ROS_SP}.tar.gz"
+
+SRC_URI[md5sum] = ""
+SRC_URI[sha256sum] = ""
+S = "${WORKDIR}/"
+
+inherit catkin
